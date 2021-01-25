@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://github.com/hibernate/hibernate-tools/tree/master/maven -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>xyz.morlotti</groupId>
+    <artifactId>db-reverse-engineering</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>12</maven.compiler.source>
+        <maven.compiler.target>12</maven.compiler.target>
+
+        <hibernate.version>6.0.0.Alpha2</hibernate.version>
+        <mysql.version>8.0.22</mysql.version>
+
+        <packageName>xyz.morlotti</packageName>
+    </properties>
+
+    <build>
+        <plugins>
+
+            <!--*****************************************************************************************************-->
+
+            <plugin>
+
+                <groupId>org.hibernate.tool</groupId>
+                <artifactId>hibernate-tools-maven</artifactId>
+                <version>${hibernate.version}</version>
+
+                <!--*************************************************************************************************-->
+
+                <dependencies>
+
+                    <!--*********************************************************************************************-->
+
+                    <dependency>
+                        <groupId>org.hibernate.tool</groupId>
+                        <artifactId>hibernate-tools-orm</artifactId>
+                        <version>${hibernate.version}</version>
+                    </dependency>
+
+                    <!--*********************************************************************************************-->
+
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+
+                    <!--*********************************************************************************************-->
+
+                </dependencies>
+
+                <!--*************************************************************************************************-->
+
+                <executions>
+                    <execution>
+                        <id>entity-generation</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>hbm2java</goal>
+                        </goals>
+                        <configuration>
+                            <ejb3>true</ejb3>
+                            <jdk5>false</jdk5>
+                            <packageName>${packageName}</packageName>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+
+                <!--*************************************************************************************************-->
+
+            </plugin>
+
+            <!--*****************************************************************************************************-->
+
+        </plugins>
+    </build>
+
+</project>

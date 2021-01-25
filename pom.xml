@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- https://github.com/hibernate/hibernate-tools/tree/master/maven -->
+<!-- https://github.com/hibernate/hibernate-tools/blob/master/maven/docs/5-minute-tutorial.md -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,7 +21,7 @@
         <hibernate.version>6.0.0.Alpha2</hibernate.version>
         <mysql.version>8.0.22</mysql.version>
 
-        <packageName>xyz.morlotti</packageName>
+        <packageName>xyz.morlotti.virtualbookcase.webapi.beans</packageName>
     </properties>
 
     <build>
